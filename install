@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Esquema de cores do terminal
-echo "source ~/dotfiles/themes/gruvbox-dark" >> .bashrc
+echo "source ~/dotfiles/themes/gruvbox-dark" >> ~/.bashrc
 
 # PPA do neovim
 if [ -x "$(command -v apt-add-repository)" ]; then
