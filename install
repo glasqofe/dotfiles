@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Esquema de cores do terminal
+echo "source ~/dotfiles/themes/gruvbox-dark" >> .bashrc
+
+# PPA do neovim
+if [ -x "$(command -v apt-add-repository)" ]; then
+  echo "Adicionando PPA: Neovim Unstable..."
+  sudo apt-add-repository ppa:neovim-ppa/unstable
+else
+  echo "Não foi possível adicionar PPA: Neovim Unstable."
+fi
+
+# Instalar programas
+if [ -x "$(command -v apt)" ]; then
+  echo "Instalando aplicativos..."
+  sudo apt update
+  sudo apt install -y neovim tmux xclip exa bat
+else
+  echo "Gerenciador de pacotes APT não encontrado."
+fi
+
+# Criar links
+echo "Criando links..."
+sudo ln -sf ~/dotfiles/bin/ide /usr/local/bin/ide
+ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/bash_aliases ~/.bash_aliases
+ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+
+# Fonte
+if [ -x "$(command -v wget)" ]; then
+  echo "Download e Instalação da fonte..."
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip && sudo unzip JetBrainsMono.zip -d /usr/local/share/fonts
+else
+  echo "Não foi possível fazer o download da fonte."
+fi
+
+# Definir fonte como padrão
+if [ -f "/usr/local/share/fonts/JetBrains Mono NL Medium Nerd Font Complete.ttf" ]; then
+  echo "Definindo a fonte como padrão..."
+  PROFILEID=$(dconf list /org/gnome/terminal/legacy/profiles:/)
+  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/$PROFILEID font 'JetBrains MonoNF 12'
+else
+  echo "Não foi possível definir a fonte como padrão. Instale a fonte manualmente."
+fi
+
+echo "A instalação foi concluída com sucesso!"

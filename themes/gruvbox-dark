@@ -1,0 +1,39 @@
+#!/bin/bash
+
+color0="#1d2021"
+color1="#cc241d"
+color2="#98971a"
+color3="#d79921"
+color4="#458588"
+color5="#b16286"
+color6="#689d6a"
+color7="#a89984"
+color8="#928374"
+color9="#fb4934"
+color10="#b8bb26"
+color11="#fabd2f"
+color12="#83a598"
+color13="#d3869b"
+color14="#8ec07c"
+color15="#ebdbb2"
+
+printf "\e]10;%s\a" "$color15"  # Texto do terminal
+printf "\e]11;%s\a" "#282828"  # Fundo do terminal
+printf "\e]12;%s\a" "#d5c4a1"  # Cor do cursor
+printf "\e]4;0;%s\a" "$color0" # Preto
+printf "\e]4;1;%s\a" "$color1" # Vermelho
+printf "\e]4;2;%s\a" "$color2" # Verde
+printf "\e]4;3;%s\a" "$color3" # Amarelo
+printf "\e]4;4;%s\a" "$color4" # Azul
+printf "\e]4;5;%s\a" "$color5" # Magenta
+printf "\e]4;6;%s\a" "$color6" # Ciano
+printf "\e]4;7;%s\a" "$color7" # Branco
+printf "\e]4;8;%s\a" "$color8" # Cinza claro
+printf "\e]4;9;%s\a" "$color9" # Vermelho claro
+printf "\e]4;10;%s\a" "$color10" # Verde claro
+printf "\e]4;11;%s\a" "$color11" # Amarelo claro
+printf "\e]4;12;%s\a" "$color12" # Azul claro
+printf "\e]4;13;%s\a" "$color13" # Magenta claro
+printf "\e]4;14;%s\a" "$color14" # Ciano claro
+printf "\e]4;15;%s\a" "$color15" # Branco claro
+
